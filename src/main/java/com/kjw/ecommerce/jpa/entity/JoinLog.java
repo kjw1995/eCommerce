@@ -11,6 +11,7 @@ import java.time.Instant;
 @Entity
 @Table(name = "join_log")
 public class JoinLog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idx", nullable = false)
