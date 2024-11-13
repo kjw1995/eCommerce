@@ -2,3 +2,18 @@ spring:
   thymeleaf:
     prefix: classpath:templates/
     suffix: .html
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce?serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull
+    username: kjwadmin
+    password: vkfksakswkd2@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+
+
