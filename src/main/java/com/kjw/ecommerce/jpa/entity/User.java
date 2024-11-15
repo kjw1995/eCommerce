@@ -1,7 +1,6 @@
 package com.kjw.ecommerce.jpa.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -9,16 +8,18 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "user")
-
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idx", nullable = false)
-    private Long id;
+    private Long idx;
 
     @Column(name = "id", nullable = false, length = 30)
-    private String id1;
+    private String id;
 
     @Column(name = "password", nullable = false, length = 25)
     private String password;

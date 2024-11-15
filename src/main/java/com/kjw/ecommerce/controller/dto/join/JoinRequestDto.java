@@ -1,5 +1,8 @@
 package com.kjw.ecommerce.controller.dto.join;
 
+import lombok.Getter;
+
+@Getter
 public class JoinRequestDto {
 
     private String userId;

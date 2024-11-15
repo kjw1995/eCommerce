@@ -4,7 +4,45 @@ const charUniRegex = /[^a-zA-Z0-9\u3131-\uD79D]/g; // 특수문자를 검사하�
 
 $(document).ready(function(){
 
+    $(".register-form").on('input change', function() {
 
+        if(checkJoinInputValidation()) {
+            $("#join-btn").removeAttr("disabled");
+        }
+
+    });
+
+    $("#join-btn").on('click', function(event) {
+
+        event.preventDefault();
+
+        const joinRequestObj = {
+
+            userId: $("#customerNameRegisterInput").val(),
+            password: $("#customerPasswordRegisterInput").val(),
+            email: $("#customerEmailRegisterInput").val(),
+            phoneNumber: $("#customerPhoneNumberInput").val(),
+            address: $("#customerAddressInput").val()
+
+        };
+
+        $.ajax({
+
+            url: '/users',
+            method: 'POST',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(joinRequestObj),
+            success: function() {
+                alert("회원가입 성공!!");
+            },
+            error: function() {
+                alert("회원가입 실패!!");
+            }
+
+        });
+
+    });
 
 })
 
@@ -29,31 +67,22 @@ function checkJoinInputValidation() {
     const phoneNumberInputVal = $("#customerPhoneNumberInput").val();
     const addressInputVal = $("#customerAddressInput").val();
 
-    if(idInputVal == "" || idInputVal == null) {
-        return false;
-    }
-
-    if(pwInputVal == "" || pwInputVal == null) {
-        return false;
-    }
-
-    if(pwCheckInputVal == "" || pwCheckInputVal == null) {
-        return false;
-    }
-
-    if(emailInputVal == "" || emailInputVal == null) {
-        return false;
-    }
-
-    if(phoneNumberInputVal == "" || phoneNumberInputVal == null) {
-        return false;
-    }
-
-    if(addressInputVal == "" || addressInputVal == null) {
+    if (!idInputVal || !pwInputVal || pwInputVal.length < 4 || !pwCheckInputVal || pwCheckInputVal.length < 4 || !emailInputVal || !phoneNumberInputVal || !addressInputVal) {
         return false;
     }
 
     return true;
+
+}
+
+function checkId() {
+
+    $.ajax({
+
+
+
+    });
+
 
 
 }
