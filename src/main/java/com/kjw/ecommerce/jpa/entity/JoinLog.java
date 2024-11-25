@@ -1,15 +1,17 @@
 package com.kjw.ecommerce.jpa.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "join_log")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class JoinLog {
 
     @Id
@@ -21,6 +23,6 @@ public class JoinLog {
     private Long userIdx;
 
     @Column(name = "createdAt")
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 
 }

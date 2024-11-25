@@ -10,15 +10,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CommonResponseDto<T> {
 
-    public CommonResponseDto(ResponseStatus status, String message) {
-        this.status = status;
-        this.message = message;
-    }
-
     private String message;
 
     private ResponseStatus status;
 
     private T data;
+
+    public CommonResponseDto(ResponseStatus status, String message) {
+        this.status = status;
+        this.message = message;
+    }
 
 }
