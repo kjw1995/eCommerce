@@ -60,9 +60,9 @@ public class JoinServiceImpl implements JoinService {
     }
 
     @Override
-    public CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(InquiryMemberRequestDto requestDto) {
+    public CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(String userId) {
 
-        Optional<User> userOpt = userRepository.findById(requestDto.getUserId());
+        Optional<User> userOpt = userRepository.findById(userId);
 
         if(userOpt.isPresent()) {
             return new CommonResponseDto<>(ResponseStatus.FAILED, "이미 존재하는 회원ID입니다.");

@@ -8,10 +8,7 @@ import com.kjw.ecommerce.controller.dto.join.inquiry.response.InquiryMemberRespo
 import com.kjw.ecommerce.service.join.JoinService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -19,10 +16,10 @@ public class JoinController {
 
     private final JoinService joinService;
 
-    @GetMapping("/users")
+    @GetMapping("/users" + "/{userId}")
     @ResponseBody
-    public CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(@RequestBody InquiryMemberRequestDto requestDto) {
-        return joinService.memberIdByMemberSearch(requestDto);
+    public CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(@PathVariable("userId")String userId) {
+        return joinService.memberIdByMemberSearch(userId);
     }
 
     @PostMapping("/users")

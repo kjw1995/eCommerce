@@ -77,22 +77,19 @@ function checkJoinInputValidation() {
 
 function checkId() {
 
+    console.log("아이디 유효성 검사");
+
     $.ajax({
 
-        url: '/users',
-        method: 'POST',
-        contentType: 'application/json',
+        url: '/users' + "/" + $("#customerNameRegisterInput").val(),
+        method: 'GET',
         dataType: 'json',
-        data: JSON.stringify($("#customerNameRegisterInput").val()),
         success: function(result) {
-
             if(result.status === "FAILED") {
                 alert(result.message);
             } else {
                 alert(result.message);
             }
-
-
         },
         error: function() {
 
