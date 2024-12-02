@@ -1,7 +1,6 @@
 package com.kjw.ecommerce.controller.join;
 
 import com.kjw.ecommerce.controller.dto.common.CommonResponseDto;
-import com.kjw.ecommerce.controller.dto.join.inquiry.request.InquiryMemberRequestDto;
 import com.kjw.ecommerce.controller.dto.join.JoinRequestDto;
 import com.kjw.ecommerce.controller.dto.join.JoinResponseDto;
 import com.kjw.ecommerce.controller.dto.join.inquiry.response.InquiryMemberResponseDto;
