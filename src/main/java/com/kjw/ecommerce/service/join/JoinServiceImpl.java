@@ -4,7 +4,6 @@ import com.kjw.ecommerce.controller.common.status.ResponseStatus;
 import com.kjw.ecommerce.controller.dto.common.CommonResponseDto;
 import com.kjw.ecommerce.controller.dto.join.JoinRequestDto;
 import com.kjw.ecommerce.controller.dto.join.JoinResponseDto;
-import com.kjw.ecommerce.controller.dto.join.inquiry.request.InquiryMemberRequestDto;
 import com.kjw.ecommerce.controller.dto.join.inquiry.response.InquiryMemberResponseDto;
 import com.kjw.ecommerce.jpa.entity.JoinLog;
 import com.kjw.ecommerce.jpa.entity.User;

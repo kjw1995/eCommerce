@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @RequiredArgsConstructor
 public class JoinController {
@@ -17,13 +19,13 @@ public class JoinController {
 
     @GetMapping("/users" + "/{userId}")
     @ResponseBody
-    public CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(@PathVariable("userId")String userId) {
+    public CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(@PathVariable("userId") @Valid String userId) {
         return joinService.memberIdByMemberSearch(userId);
     }
 
     @PostMapping("/users")
     @ResponseBody
-    public CommonResponseDto<JoinResponseDto> joinMember(@RequestBody JoinRequestDto requestDto) {
+    public CommonResponseDto<JoinResponseDto> joinMember(@RequestBody @Valid JoinRequestDto requestDto) {
         return joinService.join(requestDto);
     }
 
