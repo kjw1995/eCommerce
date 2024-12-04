@@ -2,6 +2,10 @@ package com.kjw.ecommerce.controller.common.url.CommonUrl;
 
 public class CommonUrl {
 
-    private static final String MEMBER = "member";
+    public static final String ROOT_URI = "/";
+
+    public static final String MAIN = "/main";
+
+    public static final String MEMBER = "/member";
 
 }
