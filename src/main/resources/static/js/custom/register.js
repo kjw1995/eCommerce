@@ -116,3 +116,12 @@ function checkId(element) {
     });
 
 }
+
+function findAddressWithDaum() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            console.dir(data);
+            $("#customerAddressInput").val(data.address);
+        }
+    }).open();
+}
