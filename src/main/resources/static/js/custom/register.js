@@ -62,7 +62,8 @@ function checkJoinInputValidation() {
         { element: $("#customerPasswordRegisterCheckInput"), validMessage:"비밀번호 확인", invalidMessage: "비밀번호 확인을 4자 이상 입력해주세요.", minLength: 4 },
         { element: $("#customerEmailRegisterInput"), validMessage:"이메일", invalidMessage: "이메일을 입력해주세요." },
         { element: $("#customerPhoneNumberInput"), validMessage:"전화번호('-'없이 번호만입력)", invalidMessage: "전화번호를 입력해주세요." },
-        { element: $("#customerAddressInput"), validMessage:"주소" ,invalidMessage: "주소를 입력해주세요." }
+        { element: $("#customerAddressInput"), validMessage:"주소" ,invalidMessage: "주소를 입력해주세요." },
+        { element: $("#customerDetailAddressInput"), validMessage: "상세주소", invalidMessage: "상세주소를 입력해주세요."}
     ];
 
     let isValid = true;
@@ -122,6 +123,8 @@ function findAddressWithDaum() {
         oncomplete: function(data) {
             console.dir(data);
             $("#customerAddressInput").val(data.address);
+            $("#customerSidoAddress").val(data.sido);
+            $("#customerSigunguAddress").val(data.sigungu);
         }
     }).open();
 }

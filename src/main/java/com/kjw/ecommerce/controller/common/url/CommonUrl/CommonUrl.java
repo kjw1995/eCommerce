@@ -6,6 +6,6 @@ public class CommonUrl {
 
     public static final String MAIN = "/main";
 
-    public static final String MEMBER = "/member";
+    public static final String USER = "/user";
 
 }

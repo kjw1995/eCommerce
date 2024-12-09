@@ -7,8 +7,8 @@ import com.kjw.ecommerce.controller.dto.join.inquiry.response.InquiryMemberRespo
 
 public interface JoinService {
 
-    CommonResponseDto<JoinResponseDto> join(JoinRequestDto requestDto);
+	CommonResponseDto<JoinResponseDto> join(JoinRequestDto requestDto);
 
-    CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(String userId);
+	CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(String userId);
 
 }
