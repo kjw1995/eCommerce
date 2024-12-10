@@ -10,10 +10,10 @@ public class ServletLoggingConfig {
 	public CustomRequestLoggingFilter requestLoggingFilter() {
 
 		CustomRequestLoggingFilter filter = new CustomRequestLoggingFilter();
-		filter.setIncludeClientInfo(false);
+		filter.setIncludeClientInfo(true);
 		filter.setIncludeQueryString(true);
-		filter.setIncludeHeaders(false);
-		filter.setIncludePayload(false);
+		filter.setIncludeHeaders(true);
+		filter.setIncludePayload(true);
 		filter.setMaxPayloadLength(10000);
 		return filter;
 

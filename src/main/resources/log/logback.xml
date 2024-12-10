@@ -1,0 +1,43 @@
+<configuration>
+
+    <!-- 로그 패턴 설정 -->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %p %c[%method:%line] - %msg%n"/>
+
+    <!-- 콘솔 출력 설정 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 루트 로거 설정 -->
+    <root level="ERROR">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <!-- Spring Web 로그 레벨 설정 -->
+    <!-- 핸들러 매핑된 요청만 로깅 -->
+    <logger name="org.springframework.web.servlet.DispatcherServlet" level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org.springframework.web.filter" level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org.springframework.web" level="WARN"/>
+
+    <!-- 정적 리소스 요청 제외 -->
+    <logger name="org.springframework.web.servlet.resource" level="OFF"/>
+
+    <!-- log4jdbc 로그 설정 -->
+    <!-- SQL 요청 쿼리 및 응답 값만 로깅 -->
+    <logger name="jdbc.sqlonly" level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.sqltiming" level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="jdbc.audit" level="OFF"/>
+    <logger name="jdbc.resultset" level="OFF"/>
+    <logger name="jdbc.resultsettable" level="OFF"/>
+
+</configuration>
