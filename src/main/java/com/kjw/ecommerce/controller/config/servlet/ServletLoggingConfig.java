@@ -1,4 +1,4 @@
-package com.kjw.ecommerce.controller.config;
+package com.kjw.ecommerce.controller.config.servlet;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ public class ServletLoggingConfig {
 		filter.setIncludePayload(true);
 		filter.setMaxPayloadLength(10000);
 		return filter;
-		
+
 	}
 
 }

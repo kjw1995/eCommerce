@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+    $(".aside-right-login-form").on('input change', function () {
+
+        $("#aside-right-login-form-resultmsg").remove();
+
+    });
+
     $("#aside-right-customer-login-btn").on('click', function () {
 
         const loginRequestObj = {
@@ -21,7 +27,7 @@ $(document).ready(function () {
                 if (response.status === "SUCCESS") {
                     alert("로그인 성공");
                 } else {
-                    alert("로그인 실패");
+                    $(".form-label-fixed").append(`<text id='aside-right-login-form-resultmsg'>` + response.message + `</text>`);
                 }
 
             },

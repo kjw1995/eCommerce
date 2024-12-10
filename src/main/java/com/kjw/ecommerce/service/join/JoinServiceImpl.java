@@ -1,5 +1,12 @@
 package com.kjw.ecommerce.service.join;
 
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.kjw.ecommerce.controller.common.status.ResponseStatus;
 import com.kjw.ecommerce.controller.dto.common.CommonResponseDto;
 import com.kjw.ecommerce.controller.dto.join.JoinRequestDto;
@@ -13,12 +20,6 @@ import com.kjw.ecommerce.jpa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -28,6 +29,8 @@ public class JoinServiceImpl implements JoinService {
 
 	private final JoinLogRepository joinLogRepository;
 
+	private final PasswordEncoder customBcryptoPasswordEncoder;
+
 	@Override
 	@Transactional
 	public CommonResponseDto<JoinResponseDto> join(JoinRequestDto requestDto) {
@@ -36,7 +39,7 @@ public class JoinServiceImpl implements JoinService {
 
 			User user = User.builder()
 				.id(requestDto.getUserId())
-				.password(requestDto.getPassword())
+				.password(customBcryptoPasswordEncoder.encode(requestDto.getPassword()))
 				.email(requestDto.getEmail())
 				.phonenumber(requestDto.getPhoneNumber())
 				.address(requestDto.getAddress())

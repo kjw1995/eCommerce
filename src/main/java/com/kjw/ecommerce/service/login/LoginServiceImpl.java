@@ -2,6 +2,7 @@ package com.kjw.ecommerce.service.login;
 
 import java.util.Optional;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kjw.ecommerce.controller.common.status.ResponseStatus;
@@ -18,6 +19,8 @@ public class LoginServiceImpl implements LoginService {
 
 	private final UserRepository userRepository;
 
+	private final PasswordEncoder customBcryptoPasswordEncoder;
+
 	@Override
 	public CommonResponseDto login(LoginRequestDto loginRequestDto) {
 
@@ -27,14 +30,14 @@ public class LoginServiceImpl implements LoginService {
 			User user = userOpt.get();
 
 			if (!user.getPassword().equals(loginRequestDto.getPassword())) {
-				return new CommonResponseDto(ResponseStatus.FAILED, "아이디 또는 비밀번호가 잘못돼었습니다.");
+				return new CommonResponseDto(ResponseStatus.FAILED, "아이디 또는 비밀번호가 잘못되었습니다.");
 			}
 
 			return new CommonResponseDto(ResponseStatus.SUCCESS, "로그인 성공");
 
 		}
 
-		return new CommonResponseDto(ResponseStatus.FAILED, "아이디 또는 비밀번호가 잘못돼었습니다.");
+		return new CommonResponseDto(ResponseStatus.FAILED, "아이디 또는 비밀번호가 잘못되었습니다.");
 
 	}
 }
