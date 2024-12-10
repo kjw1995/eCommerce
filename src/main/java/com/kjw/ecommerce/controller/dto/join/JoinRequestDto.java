@@ -1,7 +1,6 @@
 package com.kjw.ecommerce.controller.dto.join;
 
-import javax.validation.constraints.NotBlank;
-
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
 @Getter

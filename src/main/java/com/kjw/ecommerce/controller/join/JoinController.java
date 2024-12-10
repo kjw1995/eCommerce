@@ -1,7 +1,5 @@
 package com.kjw.ecommerce.controller.join;
 
-import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +14,7 @@ import com.kjw.ecommerce.controller.dto.join.JoinResponseDto;
 import com.kjw.ecommerce.controller.dto.join.inquiry.response.InquiryMemberResponseDto;
 import com.kjw.ecommerce.service.join.JoinService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Controller

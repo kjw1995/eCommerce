@@ -1,13 +1,12 @@
 spring:
   thymeleaf:
-    prefix: classpath:templates/
+    prefix: classpath:/templates/
     suffix: .html
   datasource:
     url: jdbc:mysql://localhost:3306/ecommerce?serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull
     username: kjwadmin
     password: vkfksakswkd2@
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     show-sql: true
     properties:
@@ -17,12 +16,6 @@ spring:
 
 logging:
   level:
-    org:
-      hibernate:
-        type:
-          descriptor:
-            sql:
-              BasicBinder: TRACE
-      springframework:
-        web: WARN
-        servlet: WARN
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework.web: WARN
+    org.springframework.servlet: WARN
