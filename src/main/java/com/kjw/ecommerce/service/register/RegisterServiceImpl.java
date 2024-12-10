@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kjw.ecommerce.controller.common.status.ResponseStatus;
 import com.kjw.ecommerce.controller.dto.common.CommonResponseDto;
-import com.kjw.ecommerce.controller.dto.join.inquiry.response.InquiryMemberResponseDto;
 import com.kjw.ecommerce.controller.dto.register.request.RegisterRequestDto;
 import com.kjw.ecommerce.controller.dto.register.response.RegisterResponseDto;
 import com.kjw.ecommerce.jpa.entity.JoinLog;
@@ -67,7 +66,7 @@ public class RegisterServiceImpl implements RegisterService {
 	}
 
 	@Override
-	public CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(String userId) {
+	public CommonResponseDto memberIdByMemberSearch(String userId) {
 
 		Optional<User> userOpt = userRepository.findById(userId);
 

@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kjw.ecommerce.controller.common.url.CommonUrl.CommonURL;
 import com.kjw.ecommerce.controller.dto.common.CommonResponseDto;
-import com.kjw.ecommerce.controller.dto.join.inquiry.response.InquiryMemberResponseDto;
 import com.kjw.ecommerce.controller.dto.register.request.RegisterRequestDto;
 import com.kjw.ecommerce.controller.dto.register.response.RegisterResponseDto;
 import com.kjw.ecommerce.service.register.RegisterService;
@@ -31,7 +30,7 @@ public class RegisterController {
 
 	@GetMapping(CommonURL.USER + "/{userId}")
 	@ResponseBody
-	public CommonResponseDto<InquiryMemberResponseDto> memberIdByMemberSearch(
+	public CommonResponseDto memberIdByMemberSearch(
 		@PathVariable("userId") @Valid String userId) {
 		return registerService.memberIdByMemberSearch(userId);
 	}
