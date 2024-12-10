@@ -1,8 +1,10 @@
 package com.kjw.ecommerce.controller.dto.login.request;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class LoginRequestDto {
 
 	/**

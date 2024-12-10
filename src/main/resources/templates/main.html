@@ -660,7 +660,7 @@
 
 <!-- Header -->
 <header id="header" class="header header_sticky">
-    <th:block th:replace="common/header/header_type7 :: header-type7"></th:block>
+    <div th:insert="~{common/header/header_type7 :: header-type7}"></div>
 </header>
 <!-- Header -->
 
@@ -5385,7 +5385,7 @@
 </footer><!-- /.footer-mobile container position-fixed d-md-none bottom-0 -->
 
 <!-- aside-right-login-form -->
-<th:block th:replace="common/aside/aside_right_login_form :: aside-right-login-form"></th:block>
+<div th:replace="~{common/aside/aside_right_login_form :: aside-right-login-form}"></div>
 <!-- aside-right-login-form -->
 
 <!-- Cart Drawer -->
@@ -5944,7 +5944,7 @@
 </div><!-- /.quickview position-fixed -->
 
 <!-- newsletter-popup -->
-<th:block th:replace="common/newsletter :: newsletter-popup"></th:block>
+<div th:replace="~{common/newsletter :: newsletter-popup}"></div>
 <!-- newsletter-popup -->
 
 <!-- Go To Top -->

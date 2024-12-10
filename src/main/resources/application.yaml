@@ -17,5 +17,5 @@ spring:
 logging:
   level:
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-    org.springframework.web: WARN
-    org.springframework.servlet: WARN
+    org.springframework.web: DEBUG
+    org.springframework.servlet: DEBUG
