@@ -31,7 +31,7 @@ public class JoinLog {
 	@Column(name = "user_idx")
 	private Long userIdx;
 
-	@Column(name = "createdAt")
+	@Column(name = "created_at")
 	private LocalDateTime createdAt;
 
 }

@@ -1,4 +1,4 @@
-package com.kjw.ecommerce.service.join;
+package com.kjw.ecommerce.service.register;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -9,9 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kjw.ecommerce.controller.common.status.ResponseStatus;
 import com.kjw.ecommerce.controller.dto.common.CommonResponseDto;
-import com.kjw.ecommerce.controller.dto.join.JoinRequestDto;
-import com.kjw.ecommerce.controller.dto.join.JoinResponseDto;
 import com.kjw.ecommerce.controller.dto.join.inquiry.response.InquiryMemberResponseDto;
+import com.kjw.ecommerce.controller.dto.register.request.RegisterRequestDto;
+import com.kjw.ecommerce.controller.dto.register.response.RegisterResponseDto;
 import com.kjw.ecommerce.jpa.entity.JoinLog;
 import com.kjw.ecommerce.jpa.entity.User;
 import com.kjw.ecommerce.jpa.repository.JoinLogRepository;
@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class JoinServiceImpl implements JoinService {
+public class RegisterServiceImpl implements RegisterService {
 
 	private final UserRepository userRepository;
 
@@ -33,7 +33,7 @@ public class JoinServiceImpl implements JoinService {
 
 	@Override
 	@Transactional
-	public CommonResponseDto<JoinResponseDto> join(JoinRequestDto requestDto) {
+	public CommonResponseDto<RegisterResponseDto> join(RegisterRequestDto requestDto) {
 
 		try {
 
@@ -57,11 +57,11 @@ public class JoinServiceImpl implements JoinService {
 
 			joinLogRepository.save(joinLog);
 
-			return new CommonResponseDto<JoinResponseDto>(ResponseStatus.SUCCESS, "회원가입 성공");
+			return new CommonResponseDto<RegisterResponseDto>(ResponseStatus.SUCCESS, "회원가입 성공");
 
 		} catch (Exception e) {
 			log.error("회원가입 실패, {}", e.getMessage(), e);
-			return new CommonResponseDto<JoinResponseDto>(ResponseStatus.FAILED, "회원가입 실패");
+			return new CommonResponseDto<RegisterResponseDto>(ResponseStatus.FAILED, "회원가입 실패");
 		}
 
 	}

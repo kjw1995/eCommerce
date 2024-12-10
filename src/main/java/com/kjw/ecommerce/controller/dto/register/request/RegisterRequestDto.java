@@ -1,10 +1,10 @@
-package com.kjw.ecommerce.controller.dto.join;
+package com.kjw.ecommerce.controller.dto.register.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
 @Getter
-public class JoinRequestDto {
+public class RegisterRequestDto {
 
 	@NotBlank(message = "회원가입 시 아이디는 필수입니다.")
 	private String userId;

@@ -29,7 +29,7 @@ public class LoginServiceImpl implements LoginService {
 		if (userOpt.isPresent()) {
 			User user = userOpt.get();
 
-			if (!user.getPassword().equals(loginRequestDto.getPassword())) {
+			if (!customBcryptoPasswordEncoder.matches(loginRequestDto.getPassword(), user.getPassword())) {
 				return new CommonResponseDto(ResponseStatus.FAILED, "아이디 또는 비밀번호가 잘못되었습니다.");
 			}
 
