@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kjw.ecommerce.controller.common.url.CommonUrl.CommonURL;
+import com.kjw.ecommerce.common.url.CommonUrl.CommonURL;
 
 @Controller
 public class MainController {

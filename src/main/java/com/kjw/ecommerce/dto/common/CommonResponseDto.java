@@ -1,6 +1,6 @@
-package com.kjw.ecommerce.controller.dto.common;
+package com.kjw.ecommerce.dto.common;
 
-import com.kjw.ecommerce.controller.common.status.ResponseStatus;
+import com.kjw.ecommerce.common.status.ResponseStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

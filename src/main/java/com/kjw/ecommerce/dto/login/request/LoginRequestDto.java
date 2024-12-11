@@ -1,4 +1,4 @@
-package com.kjw.ecommerce.controller.dto.login.request;
+package com.kjw.ecommerce.dto.login.request;
 
 import lombok.Getter;
 import lombok.ToString;

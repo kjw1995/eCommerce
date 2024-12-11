@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kjw.ecommerce.controller.common.url.CommonUrl.CommonURL;
-import com.kjw.ecommerce.controller.dto.common.CommonResponseDto;
-import com.kjw.ecommerce.controller.dto.register.request.RegisterRequestDto;
-import com.kjw.ecommerce.controller.dto.register.response.RegisterResponseDto;
+import com.kjw.ecommerce.common.url.CommonUrl.CommonURL;
+import com.kjw.ecommerce.dto.common.CommonResponseDto;
+import com.kjw.ecommerce.dto.register.request.RegisterRequestDto;
+import com.kjw.ecommerce.dto.register.response.RegisterResponseDto;
 import com.kjw.ecommerce.service.register.RegisterService;
 
 import jakarta.validation.Valid;

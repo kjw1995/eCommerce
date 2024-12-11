@@ -1,4 +1,4 @@
-package com.kjw.ecommerce.controller.common.url.CommonUrl;
+package com.kjw.ecommerce.common.url.CommonUrl;
 
 public class CommonURL {
 

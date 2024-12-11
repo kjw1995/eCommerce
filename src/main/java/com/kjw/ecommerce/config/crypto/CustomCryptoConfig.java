@@ -1,4 +1,4 @@
-package com.kjw.ecommerce.controller.config.crypto;
+package com.kjw.ecommerce.config.crypto;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

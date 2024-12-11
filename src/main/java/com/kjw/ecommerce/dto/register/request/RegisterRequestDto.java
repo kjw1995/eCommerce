@@ -1,4 +1,4 @@
-package com.kjw.ecommerce.controller.dto.register.request;
+package com.kjw.ecommerce.dto.register.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

@@ -7,10 +7,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kjw.ecommerce.controller.common.status.ResponseStatus;
-import com.kjw.ecommerce.controller.dto.common.CommonResponseDto;
-import com.kjw.ecommerce.controller.dto.register.request.RegisterRequestDto;
-import com.kjw.ecommerce.controller.dto.register.response.RegisterResponseDto;
+import com.kjw.ecommerce.common.status.ResponseStatus;
+import com.kjw.ecommerce.dto.common.CommonResponseDto;
+import com.kjw.ecommerce.dto.register.request.RegisterRequestDto;
+import com.kjw.ecommerce.dto.register.response.RegisterResponseDto;
 import com.kjw.ecommerce.jpa.entity.JoinLog;
 import com.kjw.ecommerce.jpa.entity.User;
 import com.kjw.ecommerce.jpa.repository.JoinLogRepository;

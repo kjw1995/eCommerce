@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kjw.ecommerce.controller.common.url.CommonUrl.CommonURL;
-import com.kjw.ecommerce.controller.dto.common.CommonResponseDto;
-import com.kjw.ecommerce.controller.dto.login.request.LoginRequestDto;
+import com.kjw.ecommerce.common.url.CommonUrl.CommonURL;
+import com.kjw.ecommerce.dto.common.CommonResponseDto;
+import com.kjw.ecommerce.dto.login.request.LoginRequestDto;
 import com.kjw.ecommerce.service.login.LoginService;
 
 import lombok.RequiredArgsConstructor;

@@ -12,6 +12,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor

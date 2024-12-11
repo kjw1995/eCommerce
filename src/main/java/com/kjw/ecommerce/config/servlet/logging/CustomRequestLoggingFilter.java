@@ -1,4 +1,4 @@
-package com.kjw.ecommerce.controller.config.servlet.logging;
+package com.kjw.ecommerce.config.servlet.logging;
 
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
