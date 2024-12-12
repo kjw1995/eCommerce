@@ -7,4 +7,6 @@ public interface LoginService {
 
 	CommonResponseDto login(LoginRequestDto loginRequestDto);
 
+	CommonResponseDto logout();
+
 }

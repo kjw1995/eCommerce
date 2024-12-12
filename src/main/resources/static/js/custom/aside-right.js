@@ -43,5 +43,18 @@ $(document).ready(function () {
 
     });
 
+    $("#aside-right-customer-logout-btn").on("click", function (event) {
+
+        event.preventDefault();
+
+        $.ajax({
+
+            url: '/logout',
+            method: 'POST'
+
+        });
+
+    });
+
 })
 

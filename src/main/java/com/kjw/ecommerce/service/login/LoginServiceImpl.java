@@ -47,6 +47,24 @@ public class LoginServiceImpl implements LoginService {
 
 	}
 
+	@Override
+	public CommonResponseDto logout() {
+
+		try {
+
+			ServletRequestAttributes sessionAttr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+			HttpSession session = sessionAttr.getRequest().getSession(true);
+			session.removeAttribute("userSession");
+			sessionAttr.removeAttribute("session", 1);
+
+			return new CommonResponseDto(ResponseStatus.SUCCESS, "로그아웃 성공");
+
+		} catch (Exception e) {
+			return new CommonResponseDto(ResponseStatus.FAILED, "로그아웃 실패");
+		}
+
+	}
+
 	private SessionDto createSessionDto(User user) {
 
 		ServletRequestAttributes sessionAttr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();

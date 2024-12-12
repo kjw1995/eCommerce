@@ -31,4 +31,10 @@ public class LoginController {
 		return loginService.login(loginRequestDto);
 	}
 
+	@PostMapping(CommonURL.LOGOUT)
+	@ResponseBody
+	public CommonResponseDto logout() {
+		return loginService.logout();
+	}
+
 }
