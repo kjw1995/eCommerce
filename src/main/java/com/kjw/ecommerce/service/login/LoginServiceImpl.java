@@ -53,9 +53,8 @@ public class LoginServiceImpl implements LoginService {
 		try {
 
 			ServletRequestAttributes sessionAttr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
-			HttpSession session = sessionAttr.getRequest().getSession(true);
-			session.removeAttribute("userSession");
-			sessionAttr.removeAttribute("session", 1);
+			HttpSession session = sessionAttr.getRequest().getSession(false);
+			session.invalidate();
 
 			return new CommonResponseDto(ResponseStatus.SUCCESS, "로그아웃 성공");
 
@@ -65,15 +64,15 @@ public class LoginServiceImpl implements LoginService {
 
 	}
 
-	private SessionDto createSessionDto(User user) {
+	private void createSessionDto(User user) {
 
 		ServletRequestAttributes sessionAttr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
 		HttpSession session = sessionAttr.getRequest().getSession(true);
+
 		SessionDto sessionDto = new SessionDto();
 		sessionDto.setUserId(user.getId());
+		
 		session.setAttribute("userSession", sessionDto);
-
-		return sessionDto;
 
 	}
 

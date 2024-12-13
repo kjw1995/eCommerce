@@ -29,7 +29,9 @@ $(document).ready(function () {
             success: function (response) {
 
                 if (response.status === "SUCCESS") {
-                    alert("로그인 성공");
+
+                    location.href = "/main";
+
                 } else {
 
                     $(".form-label-fixed").append(`<text id='aside-right-login-form-resultmsg'>` + response.message + `</text>`);
@@ -50,7 +52,22 @@ $(document).ready(function () {
         $.ajax({
 
             url: '/logout',
-            method: 'POST'
+            method: 'POST',
+            dataType: 'json',
+            success: function (response) {
+
+                if (response.status === "SUCCESS") {
+
+                    location.href = "/main"
+
+                } else {
+                    alert("로그아웃 실패");
+                }
+
+            },
+            error: function () {
+                alert("로그아웃 에러");
+            }
 
         });
 
