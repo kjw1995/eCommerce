@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www/thymeleaf.org">
 <head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -23,6 +23,9 @@
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
+    
+    <!-- 다음 주소찾기 API -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <!-- Document Title -->
     <title>Account Signin/Signup | Uomo eCommerce HTML5 Template</title>
@@ -1581,26 +1584,26 @@
 <!-- Page Overlay -->
 <div class="page-overlay"></div><!-- /.page-overlay -->
 
-<!-- External JavaScripts -->
-<script src="js/plugins/jquery.min.js"></script>
-<script src="js/plugins/bootstrap.bundle.min.js"></script>
-<script src="js/plugins/bootstrap-slider.min.js"></script>
+<th:block th:fragment="scripts">
 
-<script src="js/plugins/swiper.min.js"></script>
-<script src="js/plugins/countdown.js"></script>
-<script src="js/plugins/jquery.fancybox.js"></script>
+    <!-- External JavaScripts -->
+    <script th:src="@{/js/plugins/jquery.min.js}"></script>
+    <script th:src="@{/js/plugins/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/plugins/bootstrap-slider.min.js}"></script>
 
-<!-- Footer Scripts -->
-<script src="js/theme.js"></script>
+    <script th:src="@{/js/plugins/swiper.min.js}"></script>
+    <script th:src="@{/js/plugins/countdown.js}"></script>
+    <script th:src="@{/js/plugins/jquery.fancybox.js}"></script>
 
-<!-- 공통 js -->
-<script src="js/custom/common.js"></script>
+    <!-- Footer Scripts -->
+    <script th:src="@{js/theme.js}"></script>
 
-<!-- 다음 주소찾기 API -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- 공통 js -->
+    <script th:src="@{/js/custom/common.js}"></script>
 
-<!-- 회원가입 js -->
-<script src="js/custom/register.js"></script>
+    <!-- 회원가입 js -->
+    <script th:src="@{/js/custom/register.js}"></script>
 
+</th:block>
 </body>
 </html>

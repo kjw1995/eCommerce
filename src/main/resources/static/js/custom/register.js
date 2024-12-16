@@ -17,7 +17,9 @@ $(document).ready(function () {
                 email: $("#customerEmailRegisterInput").val(),
                 phoneNumber: $("#customerPhoneNumberInput").val(),
                 address: $("#customerAddressInput").val(),
-                detailAddress: $("#customerDetailAddressInput").val()
+                detailAddress: $("#customerDetailAddressInput").val(),
+                sido: $("#customerSidoAddress").val(),
+                sigungu: $("#customerSigunguAddress").val()
 
             };
 
