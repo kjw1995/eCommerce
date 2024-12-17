@@ -7,13 +7,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kjw.ecommerce.common.auth.UserAuth;
 import com.kjw.ecommerce.common.status.ResponseStatus;
+import com.kjw.ecommerce.common.status.UserStatus;
 import com.kjw.ecommerce.dto.common.CommonResponseDto;
 import com.kjw.ecommerce.dto.register.request.RegisterRequestDto;
 import com.kjw.ecommerce.dto.register.response.RegisterResponseDto;
-import com.kjw.ecommerce.jpa.entity.JoinLog;
+import com.kjw.ecommerce.jpa.entity.Address;
+import com.kjw.ecommerce.jpa.entity.Auth;
 import com.kjw.ecommerce.jpa.entity.User;
-import com.kjw.ecommerce.jpa.repository.JoinLogRepository;
+import com.kjw.ecommerce.jpa.repository.AddressRepository;
+import com.kjw.ecommerce.jpa.repository.AuthRepository;
 import com.kjw.ecommerce.jpa.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -26,7 +30,9 @@ public class RegisterServiceImpl implements RegisterService {
 
 	private final UserRepository userRepository;
 
-	private final JoinLogRepository joinLogRepository;
+	private final AddressRepository addressRepository;
+
+	private final AuthRepository authRepository;
 
 	private final PasswordEncoder customBcryptoPasswordEncoder;
 
@@ -41,20 +47,31 @@ public class RegisterServiceImpl implements RegisterService {
 				.password(customBcryptoPasswordEncoder.encode(requestDto.getPassword()))
 				.email(requestDto.getEmail())
 				.phonenumber(requestDto.getPhoneNumber())
-				.address(requestDto.getAddress())
-				.detailAddress(requestDto.getDetailAddress())
-				.sido(requestDto.getSido())
-				.sigungu(requestDto.getSigungu())
+				.isActive(UserStatus.INACTIVE.getValue())
+				.createdAt(LocalDateTime.now())
 				.build();
 
 			User result = userRepository.save(user);
 
-			JoinLog joinLog = JoinLog.builder()
+			Address address = Address.builder()
 				.userIdx(result.getIdx())
+				.defaultAddress(requestDto.getAddress().getDefaultAddress())
+				.detailAddress(requestDto.getAddress().getDetailAddress())
+				.lotNumber(requestDto.getAddress().getLotNumber())
+				.province(requestDto.getAddress().getProvince())
+				.district(requestDto.getAddress().getDistrict())
 				.createdAt(LocalDateTime.now())
 				.build();
 
-			joinLogRepository.save(joinLog);
+			addressRepository.save(address);
+
+			Auth auth = Auth.builder()
+				.user(result)
+				.type(UserAuth.NORMAL.name())
+				.createdAt(LocalDateTime.now())
+				.build();
+
+			authRepository.save(auth);
 
 			return new CommonResponseDto<RegisterResponseDto>(ResponseStatus.SUCCESS, "회원가입 성공");
 

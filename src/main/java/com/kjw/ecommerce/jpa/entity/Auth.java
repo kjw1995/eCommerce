@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -18,37 +20,25 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "auth")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
-public class User {
+public class Auth {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idx", nullable = false)
-	private Long idx;
+	@Column(name = "idx")
+	private Long id;
+
+	@ManyToOne
+	@JoinColumn(name = "idx")
+	private User user;
 
 	@NotNull
-	@Column(name = "id")
-	private String id;
+	@Column(name = "type")
+	private String type;
 
-	@NotNull
-	@Column(name = "password")
-	private String password;
-
-	@NotNull
-	@Column(name = "phonenumber")
-	private String phonenumber;
-
-	@Column(name = "email")
-	private String email;
-
-	@NotNull
-	@Column(name = "is_active")
-	private String isActive;
-
-	@NotNull
 	@Column(name = "created_at")
 	private LocalDateTime createdAt;
 

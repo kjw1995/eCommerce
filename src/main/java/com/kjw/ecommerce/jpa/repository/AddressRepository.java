@@ -1,9 +1,10 @@
 package com.kjw.ecommerce.jpa.repository;
 
-import com.kjw.ecommerce.jpa.entity.JoinLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.kjw.ecommerce.jpa.entity.Address;
+
 @Repository
-public interface JoinLogRepository extends JpaRepository<JoinLog, Long> {
+public interface AddressRepository extends JpaRepository<Address, Integer> {
 }

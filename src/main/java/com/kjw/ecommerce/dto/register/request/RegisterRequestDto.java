@@ -18,14 +18,7 @@ public class RegisterRequestDto {
 	@NotBlank(message = "회원가입 시 전화번호는 필수입니다.")
 	private String phoneNumber;
 
-	@NotBlank(message = "회원가입 시 주소는 필수입니다.")
-	private String address;
-
-	@NotBlank(message = "회원가입 시 상세주소는 필수입니다.")
-	private String detailAddress;
-
-	private String sido;
-
-	private String sigungu;
+	@NotBlank(message = "회원가입 시 주소정보는 필수입니다.")
+	private AddressRequestDto address;
 
 }

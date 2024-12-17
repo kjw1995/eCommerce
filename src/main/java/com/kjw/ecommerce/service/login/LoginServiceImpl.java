@@ -71,7 +71,7 @@ public class LoginServiceImpl implements LoginService {
 
 		SessionDto sessionDto = new SessionDto();
 		sessionDto.setUserId(user.getId());
-		
+
 		session.setAttribute("userSession", sessionDto);
 
 	}
