@@ -16,12 +16,16 @@ $(document).ready(function () {
                 password: $("#customerPasswordRegisterInput").val(),
                 email: $("#customerEmailRegisterInput").val(),
                 phoneNumber: $("#customerPhoneNumberInput").val(),
-                address: $("#customerAddressInput").val(),
-                detailAddress: $("#customerDetailAddressInput").val(),
-                sido: $("#customerSidoAddress").val(),
-                sigungu: $("#customerSigunguAddress").val()
+                address: {
+                    defaultAddress: $("#customerAddressInput").val(),
+                    detailAddress: $("#customerDetailAddressInput").val(),
+                    lotNumber: $("#customerLotNumberAddress").val(),
+                    streetName: $("#customerStreetNameAddress").val(),
+                    province: $("#customerProvinceAddress").val(),
+                    district: $("#customerDistrictAddress").val()
+                }
 
-            };
+            }
 
             $.ajax({
 
@@ -135,9 +139,13 @@ function findAddressWithDaum() {
     new daum.Postcode({
         oncomplete: function (data) {
             console.dir(data);
+
             $("#customerAddressInput").val(data.address);
-            $("#customerSidoAddress").val(data.sido);
-            $("#customerSigunguAddress").val(data.sigungu);
+            $("#customerLotNumberAddress").val(data.jibunAddress);
+            $("#customerStreetNameAddress").val(data.roadAddress);
+            $("#customerProvinceAddress").val(data.sido);
+            $("#customerDistrictAddress").val(data.sigungu);
+
         }
     }).open();
 }

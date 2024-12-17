@@ -2,8 +2,10 @@ package com.kjw.ecommerce.dto.register.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class RegisterRequestDto {
 
 	@NotBlank(message = "회원가입 시 아이디는 필수입니다.")
@@ -18,7 +20,6 @@ public class RegisterRequestDto {
 	@NotBlank(message = "회원가입 시 전화번호는 필수입니다.")
 	private String phoneNumber;
 
-	@NotBlank(message = "회원가입 시 주소정보는 필수입니다.")
 	private AddressRequestDto address;
 
 }

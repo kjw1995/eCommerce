@@ -42,38 +42,47 @@ public class RegisterServiceImpl implements RegisterService {
 
 		try {
 
-			User user = User.builder()
-				.id(requestDto.getUserId())
-				.password(customBcryptoPasswordEncoder.encode(requestDto.getPassword()))
-				.email(requestDto.getEmail())
-				.phonenumber(requestDto.getPhoneNumber())
-				.isActive(UserStatus.INACTIVE.getValue())
-				.createdAt(LocalDateTime.now())
-				.build();
+			Optional<User> userOpt = userRepository.findById(requestDto.getUserId());
 
-			User result = userRepository.save(user);
+			if (!userOpt.isPresent()) {
 
-			Address address = Address.builder()
-				.userIdx(result.getIdx())
-				.defaultAddress(requestDto.getAddress().getDefaultAddress())
-				.detailAddress(requestDto.getAddress().getDetailAddress())
-				.lotNumber(requestDto.getAddress().getLotNumber())
-				.province(requestDto.getAddress().getProvince())
-				.district(requestDto.getAddress().getDistrict())
-				.createdAt(LocalDateTime.now())
-				.build();
+				User user = User.builder()
+					.id(requestDto.getUserId())
+					.password(customBcryptoPasswordEncoder.encode(requestDto.getPassword()))
+					.email(requestDto.getEmail())
+					.phonenumber(requestDto.getPhoneNumber())
+					.isActive(UserStatus.INACTIVE.getValue())
+					.createdAt(LocalDateTime.now())
+					.build();
 
-			addressRepository.save(address);
+				User result = userRepository.save(user);
 
-			Auth auth = Auth.builder()
-				.user(result)
-				.type(UserAuth.NORMAL.name())
-				.createdAt(LocalDateTime.now())
-				.build();
+				Address address = Address.builder()
+					.userIdx(result.getIdx())
+					.defaultAddress(requestDto.getAddress().getDefaultAddress())
+					.detailAddress(requestDto.getAddress().getDetailAddress())
+					.lotNumber(requestDto.getAddress().getLotNumber())
+					.province(requestDto.getAddress().getProvince())
+					.district(requestDto.getAddress().getDistrict())
+					.createdAt(LocalDateTime.now())
+					.build();
 
-			authRepository.save(auth);
+				addressRepository.save(address);
 
-			return new CommonResponseDto<RegisterResponseDto>(ResponseStatus.SUCCESS, "회원가입 성공");
+				Auth auth = Auth.builder()
+					.userIdx(result.getIdx())
+					.type(UserAuth.NORMAL.name())
+					.createdAt(LocalDateTime.now())
+					.user(result)
+					.build();
+
+				authRepository.save(auth);
+
+				return new CommonResponseDto<RegisterResponseDto>(ResponseStatus.SUCCESS, "회원가입 성공");
+
+			} else {
+				return new CommonResponseDto<RegisterResponseDto>(ResponseStatus.FAILED, "회원가입 실패");
+			}
 
 		} catch (Exception e) {
 			log.error("회원가입 실패, {}", e.getMessage(), e);

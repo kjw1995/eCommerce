@@ -31,9 +31,9 @@ public class Auth {
 	@Column(name = "idx")
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "idx")
-	private User user;
+	@NotNull
+	@Column(name = "user_idx")
+	private long userIdx;
 
 	@NotNull
 	@Column(name = "type")
@@ -44,5 +44,9 @@ public class Auth {
 
 	@Column(name = "upated_at")
 	private LocalDateTime upatedAt;
+
+	@ManyToOne
+	@JoinColumn(name = "idx", insertable = false, updatable = false)
+	private User user;
 
 }
