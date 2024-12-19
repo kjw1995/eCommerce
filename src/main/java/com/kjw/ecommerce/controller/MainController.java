@@ -9,7 +9,12 @@ import com.kjw.ecommerce.common.url.CommonUrl.CommonURL;
 @Controller
 public class MainController {
 
-	@GetMapping({CommonURL.ROOT_URI, CommonURL.MAIN})
+	@GetMapping("/")
+	public String index() {
+		return "redirect:" + CommonURL.PAGE_MAIN;
+	}
+
+	@GetMapping(CommonURL.PAGE_MAIN)
 	public ModelAndView getMainPage() {
 		return new ModelAndView("/main");
 	}
