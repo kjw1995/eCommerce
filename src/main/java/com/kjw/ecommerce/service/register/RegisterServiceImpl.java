@@ -73,7 +73,6 @@ public class RegisterServiceImpl implements RegisterService {
 					.userIdx(result.getIdx())
 					.type(UserAuth.NORMAL.name())
 					.createdAt(LocalDateTime.now())
-					.user(result)
 					.build();
 
 				authRepository.save(auth);

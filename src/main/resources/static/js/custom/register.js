@@ -34,8 +34,14 @@ $(document).ready(function () {
                 contentType: 'application/json',
                 dataType: 'json',
                 data: JSON.stringify(joinRequestObj),
-                success: function () {
-                    alert("회원가입 성공!!");
+                success: function (response) {
+
+                    if (response.status === "SUCCESS") {
+                        alert("회원가입 성공");
+                    } else {
+                        alert("회원가입 실패");
+                    }
+
                 },
                 error: function () {
                     alert("회원가입 실패!!");
