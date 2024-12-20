@@ -2,24 +2,10 @@ package com.kjw.ecommerce.dto.common;
 
 import com.kjw.ecommerce.common.status.ResponseStatus;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public record CommonResponseDto<T>(ResponseStatus status, T data, String msg) {
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class CommonResponseDto<T> {
-
-	private String message;
-
-	private ResponseStatus status;
-
-	private T data;
-
-	public CommonResponseDto(ResponseStatus status, String message) {
-		this.status = status;
-		this.message = message;
+	public CommonResponseDto(ResponseStatus status, String msg) {
+		this(status, null, msg);
 	}
 
 }
