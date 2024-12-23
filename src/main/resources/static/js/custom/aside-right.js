@@ -30,7 +30,7 @@ $(document).ready(function () {
 
                 if (response.status === "SUCCESS") {
 
-                    location.href = "/main";
+                    location.href = URL_CONSTANTS.MAIN;
 
                 } else {
 
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
                 if (response.status === "SUCCESS") {
 
-                    location.href = "/main"
+                    location.href = URL_CONSTANTS.MAIN;
 
                 } else {
                     alert("로그아웃 실패");
