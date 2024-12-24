@@ -1,5 +1,6 @@
 package com.kjw.ecommerce.controller.register;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,14 +31,15 @@ public class RegisterController {
 
 	@GetMapping(CommonURL.USER + "/{userId}")
 	@ResponseBody
-	public CommonResponseDto memberIdByMemberSearch(
+	public ResponseEntity<CommonResponseDto> memberIdByMemberSearch(
 		@PathVariable("userId") @Valid String userId) {
 		return registerService.memberIdByMemberSearch(userId);
 	}
 
 	@PostMapping(CommonURL.USER)
 	@ResponseBody
-	public CommonResponseDto<RegisterResponseDto> joinMember(@RequestBody @Valid RegisterRequestDto requestDto) {
+	public ResponseEntity<CommonResponseDto<RegisterResponseDto>> joinMember(
+		@RequestBody @Valid RegisterRequestDto requestDto) {
 		return registerService.join(requestDto);
 	}
 

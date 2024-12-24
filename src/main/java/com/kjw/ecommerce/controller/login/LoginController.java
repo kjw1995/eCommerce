@@ -1,5 +1,6 @@
 package com.kjw.ecommerce.controller.login;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,13 +28,13 @@ public class LoginController {
 
 	@PostMapping(CommonURL.LOGIN)
 	@ResponseBody
-	public CommonResponseDto login(@RequestBody LoginRequestDto loginRequestDto) {
+	public ResponseEntity<CommonResponseDto> login(@RequestBody LoginRequestDto loginRequestDto) {
 		return loginService.login(loginRequestDto);
 	}
 
 	@PostMapping(CommonURL.LOGOUT)
 	@ResponseBody
-	public CommonResponseDto logout() {
+	public ResponseEntity<CommonResponseDto> logout() {
 		return loginService.logout();
 	}
 
