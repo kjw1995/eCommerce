@@ -1,15 +1,12 @@
-package com.kjw.ecommerce.jpa.entity;
+package com.kjw.ecommerce.jpa.entity.user;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,33 +18,41 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "auth")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Auth {
+@Table(name = "user")
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idx")
-	private Long id;
+	@Column(name = "idx", nullable = false)
+	private Long idx;
 
 	@NotNull
-	@Column(name = "user_idx")
-	private long userIdx;
+	@Column(name = "id")
+	private String id;
 
 	@NotNull
-	@Column(name = "type")
-	private String type;
+	@Column(name = "password")
+	private String password;
 
+	@NotNull
+	@Column(name = "phonenumber")
+	private String phonenumber;
+
+	@Column(name = "email")
+	private String email;
+
+	@NotNull
+	@Column(name = "is_active")
+	private String isActive;
+
+	@NotNull
 	@Column(name = "created_at")
 	private LocalDateTime createdAt;
 
 	@Column(name = "upated_at")
 	private LocalDateTime upatedAt;
-
-	@OneToMany
-	@JoinColumn(name = "user_idx", insertable = false, updatable = false)
-	private List<User> user;
 
 }

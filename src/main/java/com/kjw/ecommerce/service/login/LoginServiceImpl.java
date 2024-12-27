@@ -12,8 +12,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.kjw.ecommerce.dto.common.CommonResponseDto;
 import com.kjw.ecommerce.dto.login.request.LoginRequestDto;
 import com.kjw.ecommerce.dto.session.SessionDto;
-import com.kjw.ecommerce.jpa.entity.User;
-import com.kjw.ecommerce.jpa.repository.UserRepository;
+import com.kjw.ecommerce.jpa.entity.user.User;
+import com.kjw.ecommerce.jpa.repository.user.UserRepository;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;

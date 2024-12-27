@@ -1,4 +1,4 @@
-package com.kjw.ecommerce.jpa.entity;
+package com.kjw.ecommerce.jpa.entity.product;
 
 import java.time.LocalDateTime;
 
@@ -9,44 +9,33 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "user")
-public class User {
+@Table(name = "product")
+public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idx", nullable = false)
-	private Long idx;
+	@Column(name = "idx")
+	private Long id;
+
+	@Column(name = "user_idx")
+	private Long userIdx;
 
 	@NotNull
-	@Column(name = "id")
-	private String id;
+	@Column(name = "title")
+	private String title;
 
 	@NotNull
-	@Column(name = "password")
-	private String password;
+	@Column(name = "price")
+	private Long price;
 
-	@NotNull
-	@Column(name = "phonenumber")
-	private String phonenumber;
-
-	@Column(name = "email")
-	private String email;
-
-	@NotNull
-	@Column(name = "is_active")
-	private String isActive;
+	@Column(name = "type")
+	private String type;
 
 	@NotNull
 	@Column(name = "created_at")

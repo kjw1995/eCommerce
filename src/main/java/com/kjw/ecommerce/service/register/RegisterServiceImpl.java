@@ -14,12 +14,12 @@ import com.kjw.ecommerce.common.status.UserStatus;
 import com.kjw.ecommerce.dto.common.CommonResponseDto;
 import com.kjw.ecommerce.dto.register.request.RegisterRequestDto;
 import com.kjw.ecommerce.dto.register.response.RegisterResponseDto;
-import com.kjw.ecommerce.jpa.entity.Address;
-import com.kjw.ecommerce.jpa.entity.Auth;
-import com.kjw.ecommerce.jpa.entity.User;
-import com.kjw.ecommerce.jpa.repository.AddressRepository;
-import com.kjw.ecommerce.jpa.repository.AuthRepository;
-import com.kjw.ecommerce.jpa.repository.UserRepository;
+import com.kjw.ecommerce.jpa.entity.user.Address;
+import com.kjw.ecommerce.jpa.entity.user.Auth;
+import com.kjw.ecommerce.jpa.entity.user.User;
+import com.kjw.ecommerce.jpa.repository.user.AddressRepository;
+import com.kjw.ecommerce.jpa.repository.user.AuthRepository;
+import com.kjw.ecommerce.jpa.repository.user.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
