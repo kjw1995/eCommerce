@@ -23,8 +23,6 @@ public class LoginServiceImpl implements LoginService {
 
 	private final PasswordEncoder customBcryptoPasswordEncoder;
 
-	private final SessionUtils sessionUtils;
-
 	@Override
 	public ResponseEntity<CommonResponseDto> login(LoginRequestDto loginRequestDto) {
 
@@ -35,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 					.body(new CommonResponseDto("아이디 또는 비밀번호가 잘못되었습니다."));
 			}
-			sessionUtils.createUserSession(user);
+			SessionUtils.createUserSession(user);
 			return ResponseEntity.status(HttpStatus.CREATED).body(new CommonResponseDto("로그인 성공"));
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto("아이디 또는 비밀번호가 잘못되었습니다."));
@@ -46,7 +44,7 @@ public class LoginServiceImpl implements LoginService {
 	public ResponseEntity<CommonResponseDto> logout() {
 
 		try {
-			sessionUtils.removeUserSession();
+			SessionUtils.removeUserSession();
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(new CommonResponseDto<>("로그아웃 성공"));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto<>("문제가 발생했습니다."));

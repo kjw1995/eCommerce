@@ -1,6 +1,5 @@
 package com.kjw.ecommerce.util;
 
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -9,10 +8,9 @@ import com.kjw.ecommerce.jpa.entity.user.User;
 
 import jakarta.servlet.http.HttpSession;
 
-@Component
 public class SessionUtils {
 
-	public void createUserSession(User user) {
+	public static void createUserSession(User user) {
 		ServletRequestAttributes sessionAttr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
 		HttpSession session = sessionAttr.getRequest().getSession(true);
 
@@ -22,7 +20,7 @@ public class SessionUtils {
 		session.setAttribute("userSession", sessionDto);
 	}
 
-	public void removeUserSession() {
+	public static void removeUserSession() {
 		ServletRequestAttributes sessionAttr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
 		HttpSession session = sessionAttr.getRequest().getSession(false);
 		session.invalidate();
