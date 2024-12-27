@@ -27,16 +27,14 @@ $(document).ready(function () {
             dataType: "json",
             data: JSON.stringify(loginRequestObj),
             success: function (response) {
-
-                if (response.status === "SUCCESS") {
-
+            },
+            statusCode: {
+                201: function () {
                     location.href = URL_CONSTANTS.MAIN;
-
-                } else {
-
-                    $(".form-label-fixed").append(`<text id='aside-right-login-form-resultmsg'>` + response.message + `</text>`);
+                },
+                400: function (response) {
+                    $(".form-label-fixed").append(`<text id='aside-right-login-form-resultmsg'>` + response.msg + `</text>`);
                 }
-
             },
             error: function () {
                 alert("로그인 에러");
@@ -55,16 +53,16 @@ $(document).ready(function () {
             method: 'POST',
             dataType: 'json',
             success: function (response) {
-
-                if (response.status === "SUCCESS") {
-
+            },
+            statusCode: {
+                202: function () {
                     location.href = URL_CONSTANTS.MAIN;
-
-                } else {
+                },
+                400: function () {
                     alert("로그아웃 실패");
                 }
-
             },
+
             error: function () {
                 alert("로그아웃 에러");
             }
