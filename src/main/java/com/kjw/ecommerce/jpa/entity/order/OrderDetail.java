@@ -36,7 +36,7 @@ public class OrderDetail {
 	private LocalDateTime upatedAt;
 
 	@OneToOne
-	@JoinColumn(name = "order_idx")
+	@JoinColumn(name = "order_idx", insertable = false, updatable = false)
 	private Order order;
 
 }

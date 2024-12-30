@@ -51,11 +51,11 @@ public class Order {
 	private LocalDateTime upatedAt;
 
 	@ManyToOne
-	@JoinColumn(name = "user_idx")
+	@JoinColumn(name = "user_idx", insertable = false, updatable = false)
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "product_idx")
+	@JoinColumn(name = "product_idx", insertable = false, updatable = false)
 	private Product product;
 
 	@OneToOne(mappedBy = "order")
