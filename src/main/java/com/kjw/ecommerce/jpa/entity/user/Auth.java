@@ -1,7 +1,6 @@
 package com.kjw.ecommerce.jpa.entity.user;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -46,8 +45,8 @@ public class Auth {
 	@Column(name = "upated_at")
 	private LocalDateTime upatedAt;
 
-	@OneToMany
-	@JoinColumn(name = "user_idx", insertable = false, updatable = false)
-	private List<User> user;
+	@ManyToOne
+	@JoinColumn(name = "idx", insertable = false, updatable = false)
+	private User user;
 
 }

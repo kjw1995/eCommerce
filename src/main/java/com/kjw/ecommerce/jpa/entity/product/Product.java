@@ -1,12 +1,19 @@
 package com.kjw.ecommerce.jpa.entity.product;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.kjw.ecommerce.jpa.entity.order.Order;
+import com.kjw.ecommerce.jpa.entity.user.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -43,5 +50,12 @@ public class Product {
 
 	@Column(name = "upated_at")
 	private LocalDateTime upatedAt;
+
+	@ManyToOne
+	@JoinColumn(name = "product", insertable = false, updatable = false)
+	private User user;
+
+	@OneToMany(mappedBy = "product")
+	private List<Order> order;
 
 }

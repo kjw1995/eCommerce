@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -32,5 +34,9 @@ public class OrderDetail {
 
 	@Column(name = "upated_at")
 	private LocalDateTime upatedAt;
+
+	@OneToOne
+	@JoinColumn(name = "order_idx")
+	private Order order;
 
 }

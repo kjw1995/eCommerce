@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -57,5 +59,9 @@ public class Address {
 
 	@Column(name = "upated_at")
 	private LocalDateTime upatedAt;
+
+	@OneToOne
+	@JoinColumn(name = "user_idx", insertable = false, updatable = false)
+	private User user;
 
 }

@@ -1,12 +1,18 @@
 package com.kjw.ecommerce.jpa.entity.user;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.kjw.ecommerce.jpa.entity.order.Order;
+import com.kjw.ecommerce.jpa.entity.product.Product;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -54,5 +60,17 @@ public class User {
 
 	@Column(name = "upated_at")
 	private LocalDateTime upatedAt;
+
+	@OneToOne(mappedBy = "user")
+	private Address address;
+
+	@OneToMany(mappedBy = "user")
+	private List<Auth> auth;
+
+	@OneToMany(mappedBy = "user")
+	private List<Product> product;
+
+	@OneToMany(mappedBy = "user")
+	private List<Order> order;
 
 }
