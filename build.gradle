@@ -25,10 +25,6 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    snippetsDir = file('build/generated-snippets')
-}
-
 dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -68,24 +64,39 @@ dependencies {
 
 }
 
-test {
-    outputs.dir snippetsDir
-}
-
-asciidoctor {
-    inputs.dir snippetsDir
-    configurations 'asciidoctorExt'
-    dependsOn test
-}
-
-bootJar {
-    dependsOn asciidoctor
-    copy {
-        from asciidoctor.outputDir
-        into 'static/docs'
-    }
+ext {
+    snippetsDir = file('build/generated-snippets')
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+    outputs.dir snippetsDir
+}
+
+asciidoctor {
+    configurations 'asciidoctorExt'
+    baseDirFollowsSourceFile()
+    inputs.dir snippetsDir
+    dependsOn test
+}
+
+asciidoctor.doFirst{
+    delete file("src/main/resources/static/docs")
+}
+
+task copyDocument(type: Copy) {
+    dependsOn asciidoctor
+    from file("build/docs/asciidoc")
+    into file("src/main/resources/static/docs")
+}
+
+build {
+    dependsOn copyDocument
+}
+
+bootJar {
+    dependsOn asciidoctor
+    from("${asciidoctor.outputDir}") {
+        into "static/docs"
+    }
 }
