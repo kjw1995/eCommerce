@@ -13,7 +13,6 @@ import com.kjw.ecommerce.common.auth.UserAuth;
 import com.kjw.ecommerce.common.status.UserStatus;
 import com.kjw.ecommerce.dto.common.CommonResponseDto;
 import com.kjw.ecommerce.dto.register.request.RegisterRequestDto;
-import com.kjw.ecommerce.dto.register.response.RegisterResponseDto;
 import com.kjw.ecommerce.jpa.entity.user.Address;
 import com.kjw.ecommerce.jpa.entity.user.Auth;
 import com.kjw.ecommerce.jpa.entity.user.User;
@@ -39,7 +38,7 @@ public class RegisterServiceImpl implements RegisterService {
 
 	@Override
 	@Transactional
-	public ResponseEntity<CommonResponseDto<RegisterResponseDto>> join(RegisterRequestDto requestDto) {
+	public ResponseEntity<CommonResponseDto<Void>> join(RegisterRequestDto requestDto) {
 
 		try {
 
@@ -63,12 +62,12 @@ public class RegisterServiceImpl implements RegisterService {
 	}
 
 	@Override
-	public ResponseEntity<CommonResponseDto> memberIdByMemberSearch(String userId) {
+	public ResponseEntity<CommonResponseDto<Void>> memberIdByMemberSearch(String userId) {
 
 		Optional<User> userOpt = userRepository.findById(userId);
 
 		if (userOpt.isPresent()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto<>("이미 존재하는 회원ID입니다."));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto<>("사용 불가능한 아이디 입니다."));
 		}
 
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(new CommonResponseDto<>("회원ID 사용 가능"));
