@@ -1,6 +1,5 @@
-= eCommerce - User API Document
+= 회원 아이디 조회
 
-== 회원 아이디 조회
 === 요청
 include::{snippets}/memberIdByMemberSearch/http-request.adoc[]
 include::{snippets}/memberIdByMemberSearch/path-parameters.adoc[]
