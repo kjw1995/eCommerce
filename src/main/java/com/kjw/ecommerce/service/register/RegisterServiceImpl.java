@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kjw.ecommerce.common.auth.UserAuth;
+import com.kjw.ecommerce.common.message.UserResponseMessage;
 import com.kjw.ecommerce.common.status.UserStatus;
 import com.kjw.ecommerce.dto.common.CommonResponseDto;
 import com.kjw.ecommerce.dto.register.request.RegisterRequestDto;
@@ -26,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+
 public class RegisterServiceImpl implements RegisterService {
 
 	private final UserRepository userRepository;
@@ -48,7 +50,7 @@ public class RegisterServiceImpl implements RegisterService {
 
 				saveUser(requestDto);
 				return ResponseEntity.status(HttpStatus.CREATED)
-					.body(new CommonResponseDto<>("회원가입 성공"));
+					.body(new CommonResponseDto<>(UserResponseMessage.CREATE_SUCCESS.getValue()));
 
 			} else {
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto<>("회원가입 실패"));
@@ -62,15 +64,16 @@ public class RegisterServiceImpl implements RegisterService {
 	}
 
 	@Override
+	@Transactional
 	public ResponseEntity<CommonResponseDto<Void>> memberIdByMemberSearch(String userId) {
 
 		Optional<User> userOpt = userRepository.findById(userId);
 
 		if (userOpt.isPresent()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto<>("사용 불가능한 아이디 입니다."));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto<>(UserResponseMessage.NOT_FIND.getValue()));
 		}
 
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(new CommonResponseDto<>("회원ID 사용 가능"));
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(new CommonResponseDto<>(UserResponseMessage.FIND.getValue()));
 	}
 
 	private void saveUser(RegisterRequestDto requestDto) {
