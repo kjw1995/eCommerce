@@ -50,15 +50,17 @@ public class RegisterServiceImpl implements RegisterService {
 
 				saveUser(requestDto);
 				return ResponseEntity.status(HttpStatus.CREATED)
-					.body(new CommonResponseDto<>(UserResponseMessage.CREATE_SUCCESS.getValue()));
+					.body(new CommonResponseDto<>(UserResponseMessage.REGISTER_SUCCESS.getValue()));
 
 			} else {
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto<>("회원가입 실패"));
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+					.body(new CommonResponseDto<>(UserResponseMessage.REGISTER_FAIL.getValue()));
 			}
 
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto<>("회원가입 실패"));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(new CommonResponseDto<>(UserResponseMessage.REGISTER_FAIL.getValue()));
 		}
 
 	}
