@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.kjw.ecommerce.common.message.UserResponseMessage;
 import com.kjw.ecommerce.dto.common.CommonResponseDto;
+import com.kjw.ecommerce.dto.register.request.RegisterRequestDto;
+import com.kjw.ecommerce.jpa.entity.user.Address;
 import com.kjw.ecommerce.jpa.entity.user.User;
 import com.kjw.ecommerce.jpa.repository.user.AddressRepository;
 import com.kjw.ecommerce.jpa.repository.user.AuthRepository;
@@ -29,15 +32,6 @@ public class RegisterServiceTest {
 
 	@Mock
 	private UserRepository userRepository;
-
-	@Mock
-	private AddressRepository addressRepository;
-
-	@Mock
-	private AuthRepository authRepository;
-
-	@Mock
-	private PasswordEncoder passwordEncoder;
 
 	@InjectMocks
 	private RegisterServiceImpl registerService;
@@ -69,7 +63,6 @@ public class RegisterServiceTest {
 
 		// given
 		String testUserId = "test01";
-
 		when(userRepository.findById(testUserId)).thenReturn(Optional.empty());
 
 		// when
@@ -81,5 +74,29 @@ public class RegisterServiceTest {
 			.containsExactly(HttpStatus.ACCEPTED, UserResponseMessage.FIND.getValue());
 
 	}
+
+	@Test
+	@DisplayName("[단위] - 회원가입 실패, 이미 가입된 유저")
+	void testJoinFail() {
+
+		// given
+		String testUserId = "wjddn312";
+		User user = User.builder()
+			.id(testUserId)
+			.build();
+		RegisterRequestDto requestDto = new RegisterRequestDto();
+		requestDto.setUserId(testUserId);
+		when(userRepository.findById(testUserId)).thenReturn(Optional.of(user));
+
+		// when
+		ResponseEntity<CommonResponseDto<Void>> response = registerService.join(requestDto);
+
+		// then
+		assertThat(response)
+			.extracting(ResponseEntity::getStatusCode, resp -> resp.getBody().msg())
+			.containsExactly(HttpStatus.BAD_REQUEST, UserResponseMessage.REGISTER_FAIL.getValue());
+	}
+
+
 
 }

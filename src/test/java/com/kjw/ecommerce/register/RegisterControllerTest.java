@@ -101,7 +101,7 @@ public class RegisterControllerTest {
 		// then
 		actions.andExpect(status().isCreated())
 			.andExpect(jsonPath("$.data").value(nullValue()))
-			.andExpect(jsonPath("$.msg").value(UserResponseMessage.CREATE_SUCCESS.getValue()))
+			.andExpect(jsonPath("$.msg").value(UserResponseMessage.REGISTER_SUCCESS.getValue()))
 			.andDo(print())
 			.andDo(document("register",
 				requestFields(
