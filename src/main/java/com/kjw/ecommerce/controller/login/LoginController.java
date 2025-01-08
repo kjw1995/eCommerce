@@ -28,13 +28,13 @@ public class LoginController {
 
 	@PostMapping(CommonURL.LOGIN)
 	@ResponseBody
-	public ResponseEntity<CommonResponseDto> login(@RequestBody LoginRequestDto loginRequestDto) {
+	public ResponseEntity<CommonResponseDto<Void>> login(@RequestBody LoginRequestDto loginRequestDto) {
 		return loginService.login(loginRequestDto);
 	}
 
 	@PostMapping(CommonURL.LOGOUT)
 	@ResponseBody
-	public ResponseEntity<CommonResponseDto> logout() {
+	public ResponseEntity<CommonResponseDto<Void>> logout() {
 		return loginService.logout();
 	}
 
