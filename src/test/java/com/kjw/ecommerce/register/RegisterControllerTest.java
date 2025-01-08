@@ -1,7 +1,6 @@
 package com.kjw.ecommerce.register;
 
 import static org.hamcrest.Matchers.*;
-import static org.mockito.Mockito.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.*;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
@@ -16,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.test.web.servlet.MockMvc;
@@ -56,7 +54,7 @@ public class RegisterControllerTest {
 
 		// then
 		actions.andExpect(status().isAccepted())
-			.andExpect(jsonPath("$.data").value(nullValue()))
+			.andExpect(jsonPath("$.data").doesNotExist())
 			.andExpect(jsonPath("$.msg").value(UserResponseMessage.FIND.getValue()))
 			.andDo(print())
 			.andDo(document("memberIdByMemberSearch",
@@ -64,8 +62,8 @@ public class RegisterControllerTest {
 					parameterWithName("userId").description("유저 아이디")
 				),
 				responseFields(
-					fieldWithPath("data").description("데이터").optional(),
-					fieldWithPath("msg").description("응답 메세지")
+					fieldWithPath("data").description("응답 데이터").optional().type("Object"),
+					fieldWithPath("msg").description("응답 메세지").type("String")
 				)
 			));
 

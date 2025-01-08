@@ -7,8 +7,8 @@ import com.kjw.ecommerce.dto.login.request.LoginRequestDto;
 
 public interface LoginService {
 
-	ResponseEntity<CommonResponseDto> login(LoginRequestDto loginRequestDto);
+	ResponseEntity<CommonResponseDto<Void>> login(LoginRequestDto loginRequestDto);
 
-	ResponseEntity<CommonResponseDto> logout();
+	ResponseEntity<CommonResponseDto<Void>> logout();
 
 }

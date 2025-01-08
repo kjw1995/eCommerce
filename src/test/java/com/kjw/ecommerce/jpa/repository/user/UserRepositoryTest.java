@@ -21,8 +21,8 @@ public class UserRepositoryTest {
 	private UserRepository userRepository;
 
 	@Test
-	@DisplayName("[단위] - UserRepository.findById(String id) 테스트")
-	void testFindById() {
+	@DisplayName("[단위] - UserRepository.findById(String id) 성공")
+	void testFindByIdSuccess() {
 
 		// given
 		String userId = "wjddn312";
@@ -32,6 +32,21 @@ public class UserRepositoryTest {
 
 		// then
 		assertThat(user).isPresent();
+
+	}
+
+	@Test
+	@DisplayName("[단위] - UserRepository.findById(String id) 실패")
+	void testFindByIdFail() {
+
+		// given
+		String userId = "test01";
+
+		//when
+		Optional<User> user = userRepository.findById(userId);
+
+		// then
+		assertThat(user).isEmpty();
 
 	}
 
