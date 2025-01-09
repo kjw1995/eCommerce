@@ -1,4 +1,4 @@
-package com.kjw.ecommerce.register;
+package com.kjw.ecommerce.controller.register;
 
 import static org.hamcrest.Matchers.*;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.*;
@@ -71,7 +71,7 @@ public class RegisterControllerTest {
 
 	@Test
 	@DisplayName("회원가입 테스트")
-	void testRegister() throws Exception{
+	void testRegister() throws Exception {
 
 		// given
 		AddressRequestDto addressRequestDto = AddressRequestDto.builder()

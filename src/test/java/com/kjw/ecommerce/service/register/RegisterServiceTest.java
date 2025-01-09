@@ -1,11 +1,10 @@
-package com.kjw.ecommerce.register;
+package com.kjw.ecommerce.service.register;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 import static org.mockito.Mockito.*;
 
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,17 +13,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.kjw.ecommerce.common.message.UserResponseMessage;
 import com.kjw.ecommerce.dto.common.CommonResponseDto;
 import com.kjw.ecommerce.dto.register.request.RegisterRequestDto;
-import com.kjw.ecommerce.jpa.entity.user.Address;
 import com.kjw.ecommerce.jpa.entity.user.User;
-import com.kjw.ecommerce.jpa.repository.user.AddressRepository;
-import com.kjw.ecommerce.jpa.repository.user.AuthRepository;
 import com.kjw.ecommerce.jpa.repository.user.UserRepository;
-import com.kjw.ecommerce.service.register.RegisterServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("[단위] 테스트 - RegisterController")
@@ -96,7 +90,5 @@ public class RegisterServiceTest {
 			.extracting(ResponseEntity::getStatusCode, resp -> resp.getBody().msg())
 			.containsExactly(HttpStatus.BAD_REQUEST, UserResponseMessage.REGISTER_FAIL.getValue());
 	}
-
-
 
 }

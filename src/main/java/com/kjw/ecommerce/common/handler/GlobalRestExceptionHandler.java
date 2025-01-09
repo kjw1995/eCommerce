@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 public class GlobalRestExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity handleRestException(Exception e) {
+	public ResponseEntity<String> handleRestException(Exception e) {
 		log.error(e.getMessage(), e);
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("문제가 발생했습니다.");
 	}
