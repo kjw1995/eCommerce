@@ -1,0 +1,57 @@
+= eCommerce API Document
+
+== 로그인
+
+=== 요청
+
+include::{snippets}/login/curl-request.adoc[]
+include::{snippets}/login/httpie-request.adoc[]
+include::{snippets}/login/http-request.adoc[]
+include::{snippets}/login/request-body.adoc[]
+include::{snippets}/login/request-fields.adoc[]
+
+=== 응답
+
+include::{snippets}/login/response-body.adoc[]
+include::{snippets}/login/response-fields.adoc[]
+
+== 회원 아이디 조회
+
+=== 요청
+
+include::{snippets}/memberIdByMemberSearch/http-request.adoc[]
+include::{snippets}/memberIdByMemberSearch/path-parameters.adoc[]
+
+=== 응답
+
+include::{snippets}/memberIdByMemberSearch/response-fields.adoc[]
+include::{snippets}/memberIdByMemberSearch/response-body.adoc[]
+
+== 회원 가입
+
+=== 요청
+
+include::{snippets}/register/curl-request.adoc[]
+include::{snippets}/register/httpie-request.adoc[]
+include::{snippets}/register/http-request.adoc[]
+include::{snippets}/register/request-body.adoc[]
+include::{snippets}/register/request-fields.adoc[]
+
+=== 응답
+
+include::{snippets}/register/response-body.adoc[]
+include::{snippets}/register/response-fields.adoc[]
+
+== 상품리스트 조회
+
+=== 요청
+
+include::{snippets}/Products/curl-request.adoc[]
+include::{snippets}/Products/httpie-request.adoc[]
+include::{snippets}/Products/http-request.adoc[]
+include::{snippets}/Products/request-body.adoc[]
+
+=== 응답
+
+include::{snippets}/Products/response-body.adoc[]
+include::{snippets}/Products/response-fields.adoc[]

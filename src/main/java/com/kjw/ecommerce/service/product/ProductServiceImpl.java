@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
 		List<ProductListDto> responseData = Optional.of(productQueryDslRepository.getProducts())
 			.orElseThrow(() -> new DataListFetchException("상품 정보 조회 오류"));
 
-		return ResponseEntity.ok(new CommonResponseDto<>(responseData));
+		return ResponseEntity.ok(new CommonResponseDto<>(responseData, "상품 조회 성공"));
 	}
 
 	@Override

@@ -1,0 +1,100 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.spring.gradle",
+    "module": "dependency-management-plugin",
+    "version": "1.1.2",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.6.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "dependency-management-plugin-1.1.2.jar",
+          "url": "dependency-management-plugin-1.1.2.jar",
+          "size": 1852521,
+          "sha512": "d847ccf7fa1de96ba5790b0237556d890026f4b91fdc357d043017def8100ed1dcf7ef9907e3dea5b19674abda6da6a7f2e7be177f53e54e15dd2c78df627b60",
+          "sha256": "4bc02d80bd64fa8e563aa14f256d99f3de0b428a178b55d633e02399ad71bc4d",
+          "sha1": "943e59696fcf4fc66cbbeac6427d0082aff0649f",
+          "md5": "e36683ab024a1ac61cf0eaccbd61cc22"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "dependency-management-plugin-1.1.2.jar",
+          "url": "dependency-management-plugin-1.1.2.jar",
+          "size": 1852521,
+          "sha512": "d847ccf7fa1de96ba5790b0237556d890026f4b91fdc357d043017def8100ed1dcf7ef9907e3dea5b19674abda6da6a7f2e7be177f53e54e15dd2c78df627b60",
+          "sha256": "4bc02d80bd64fa8e563aa14f256d99f3de0b428a178b55d633e02399ad71bc4d",
+          "sha1": "943e59696fcf4fc66cbbeac6427d0082aff0649f",
+          "md5": "e36683ab024a1ac61cf0eaccbd61cc22"
+        }
+      ]
+    },
+    {
+      "name": "javadocElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "dependency-management-plugin-1.1.2-javadoc.jar",
+          "url": "dependency-management-plugin-1.1.2-javadoc.jar",
+          "size": 59033,
+          "sha512": "80a295dbb0e131e13afca7d9c2df4792b291ac496a87430d4180ac83bd0bc8ac55e8347acaa127d0a703496ba47af72cc72033b30b42b59f3fecaf6a4d713428",
+          "sha256": "d5dbb8b50cafef7486c6ecf6b68a3ceda524b223cce1b30083ff324f01d78764",
+          "sha1": "c6078b71f725c733da3038ff6fad722db5505660",
+          "md5": "7c3e71f25bb4a4c258b0aa2fb885c48a"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "dependency-management-plugin-1.1.2-sources.jar",
+          "url": "dependency-management-plugin-1.1.2-sources.jar",
+          "size": 77227,
+          "sha512": "e697febe8c8498f0f39da3af09a8356ce8b2a9efa3d5b08539421df20510afb2fb573a33834d7521fac069e7f6dfe5b9844f74039755200e66ef6a24042ce0cc",
+          "sha256": "0f90cb213932c2cdea35a23bca467ef921486ad08e345a1c38d4aed76aa71927",
+          "sha1": "43dee3b5f5a14b9a365b497d79727d746267db92",
+          "md5": "964accc663592c7e999841f833fff828"
+        }
+      ]
+    }
+  ]
+}
