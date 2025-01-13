@@ -26,4 +26,9 @@ public class SessionUtils {
 		session.invalidate();
 	}
 
+	public static SessionDto getUserSession() {
+		ServletRequestAttributes sessionAttr = (ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
+		return (SessionDto)sessionAttr.getRequest().getSession().getAttribute("userSession");
+	}
+
 }

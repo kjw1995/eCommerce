@@ -39,7 +39,7 @@ public class RegisterServiceImpl implements RegisterService {
 	private final PasswordEncoder customBcryptoPasswordEncoder;
 
 	@Override
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	public ResponseEntity<CommonResponseDto<Void>> join(RegisterRequestDto requestDto) {
 
 		try {
@@ -66,19 +66,21 @@ public class RegisterServiceImpl implements RegisterService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public ResponseEntity<CommonResponseDto<Void>> memberIdByMemberSearch(String userId) {
 
 		Optional<User> userOpt = userRepository.findById(userId);
 
 		if (userOpt.isPresent()) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new CommonResponseDto<>(UserResponseMessage.NOT_FIND.getValue()));
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(new CommonResponseDto<>(UserResponseMessage.NOT_FIND.getValue()));
 		}
 
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(new CommonResponseDto<>(UserResponseMessage.FIND.getValue()));
+		return ResponseEntity.status(HttpStatus.ACCEPTED)
+			.body(new CommonResponseDto<>(UserResponseMessage.FIND.getValue()));
 	}
 
-	private void saveUser(RegisterRequestDto requestDto) {
+	private void saveUser(RegisterRequestDto requestDto) throws Exception {
 
 		User user = User.builder()
 			.id(requestDto.getUserId())

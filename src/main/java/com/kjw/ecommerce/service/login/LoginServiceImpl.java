@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kjw.ecommerce.dto.common.CommonResponseDto;
 import com.kjw.ecommerce.dto.login.request.LoginRequestDto;
@@ -24,6 +25,7 @@ public class LoginServiceImpl implements LoginService {
 	private final PasswordEncoder customBcryptoPasswordEncoder;
 
 	@Override
+	@Transactional(readOnly = true)
 	public ResponseEntity<CommonResponseDto<Void>> login(LoginRequestDto loginRequestDto) {
 
 		Optional<User> userOpt = userRepository.findById(loginRequestDto.getId());
