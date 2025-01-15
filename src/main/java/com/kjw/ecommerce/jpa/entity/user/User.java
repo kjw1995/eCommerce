@@ -68,7 +68,7 @@ public class User {
 	private List<Auth> auth;
 
 	@OneToMany(mappedBy = "user")
-	private List<Product> product;
+	private List<Product> products;
 
 	@OneToMany(mappedBy = "user")
 	private List<Order> order;

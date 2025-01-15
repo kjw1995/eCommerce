@@ -55,3 +55,17 @@ include::{snippets}/Products/request-body.adoc[]
 
 include::{snippets}/Products/response-body.adoc[]
 include::{snippets}/Products/response-fields.adoc[]
+
+== 상품 등록
+
+=== 요청
+
+include::{snippets}/productRegister/curl-request.adoc[]
+include::{snippets}/productRegister/httpie-request.adoc[]
+include::{snippets}/productRegister/http-request.adoc[]
+include::{snippets}/productRegister/request-body.adoc[]
+
+=== 응답
+
+include::{snippets}/productRegister/response-body.adoc[]
+include::{snippets}/productRegister/response-fields.adoc[]

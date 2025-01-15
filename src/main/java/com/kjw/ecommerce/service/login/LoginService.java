@@ -1,13 +1,11 @@
 package com.kjw.ecommerce.service.login;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.provisioning.UserDetailsManager;
 
 import com.kjw.ecommerce.dto.common.CommonResponseDto;
-import com.kjw.ecommerce.dto.login.request.LoginRequestDto;
 
-public interface LoginService {
-
-	ResponseEntity<CommonResponseDto<Void>> login(LoginRequestDto loginRequestDto);
+public interface LoginService extends UserDetailsManager {
 
 	ResponseEntity<CommonResponseDto<Void>> logout();
 

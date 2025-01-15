@@ -58,7 +58,7 @@ public class Product {
 	private LocalDateTime upatedAt;
 
 	@ManyToOne
-	@JoinColumn(name = "product", insertable = false, updatable = false)
+	@JoinColumn(name = "products", insertable = false, updatable = false)
 	private User user;
 
 	@OneToMany(mappedBy = "product")
