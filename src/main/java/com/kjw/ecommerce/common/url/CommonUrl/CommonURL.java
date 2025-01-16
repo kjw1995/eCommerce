@@ -2,22 +2,22 @@ package com.kjw.ecommerce.common.url.CommonUrl;
 
 public class CommonURL {
 
-	public static final String ROOT_URI = "/";
+	public static final String API_VERSION = "/api/v1";
+	public static final String AUTH_URI = "/auth";
+	public static final String VIEW_URI = "/view";
 
-	public static final String USER = "/users";
+	public static final String MEMBER_URI = "/members";
+	public static final String PRODUCT_URI = "/product";
 
-	public static final String LOGIN = "/login";
-
-	public static final String LOGOUT = "/logout";
-
-	public static final String PRODUCT = "/product";
+	/* 인증 */
+	public static final String MEMBER_LOGIN = API_VERSION + AUTH_URI + MEMBER_URI + "/login";
+	public static final String MEMBER_LOGOUT = API_VERSION + AUTH_URI + MEMBER_URI + "/logout";
 
 	/* 페이지 */
-	public static final String PAGE_URI = "/page";
-	public static final String PAGE_MAIN = PAGE_URI + "/main";
-	public static final String PAGE_LOGIN = PAGE_URI + "/login";
-	public static final String PAGE_REGISTRATION = PAGE_URI + "/registration";
-	public static final String PAGE_DASHBOARD = PAGE_URI + "/dashboard";
-	public static final String PAGE_PRODUCT = PAGE_URI + PRODUCT;
+	public static final String VIEW_MAIN = VIEW_URI + "/main";
+	public static final String VIEW_LOGIN = VIEW_URI + "/login";
+	public static final String VIEW_REGISTRATION = VIEW_URI + "/registration";
+	public static final String VIEW_DASHBOARD = VIEW_URI + "/dashboard";
+	public static final String VIEW_PRODUCT = VIEW_URI + PRODUCT_URI;
 
 }

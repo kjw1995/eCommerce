@@ -24,7 +24,7 @@ public class ProductController {
 
 	private final ProductService productService;
 
-	@GetMapping(CommonURL.PAGE_PRODUCT)
+	@GetMapping(CommonURL.VIEW_PRODUCT)
 	public ModelAndView product() {
 		return new ModelAndView("/product/product");
 	}

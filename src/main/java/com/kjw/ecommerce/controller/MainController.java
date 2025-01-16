@@ -11,10 +11,10 @@ public class MainController {
 
 	@GetMapping("/")
 	public String index() {
-		return "redirect:" + CommonURL.PAGE_MAIN;
+		return "redirect:" + CommonURL.VIEW_MAIN;
 	}
 
-	@GetMapping(CommonURL.PAGE_MAIN)
+	@GetMapping(CommonURL.VIEW_MAIN)
 	public ModelAndView getMainPage() {
 		return new ModelAndView("/main");
 	}

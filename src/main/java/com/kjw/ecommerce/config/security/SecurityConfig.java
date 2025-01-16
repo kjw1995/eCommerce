@@ -1,5 +1,6 @@
 package com.kjw.ecommerce.config.security;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -7,7 +8,9 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -31,42 +34,40 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
+	// 정적리소스 인증 설정
+	@Bean
+	public WebSecurityCustomizer webConfigure() {
+		return (web -> web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations()));
+	}
+
 	@Bean
 	public SecurityFilterChain filter(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
 
 		MvcRequestMatcher.Builder mvc = new MvcRequestMatcher.Builder(introspector);
 
-		MvcRequestMatcher[] staticResource = {
-			mvc.pattern("/cs/**"),
-			mvc.pattern("/js/**"),
-			mvc.pattern("/fonts/**"),
-			mvc.pattern("/images/**")
-		};
-
 		MvcRequestMatcher[] whiteList = {
 			mvc.pattern("/"),
-			mvc.pattern(CommonURL.PAGE_LOGIN),
-			mvc.pattern(CommonURL.PAGE_REGISTRATION + "/**"),
-			mvc.pattern(CommonURL.PAGE_MAIN + "/**"),
-			mvc.pattern(CommonURL.PAGE_PRODUCT + "/**"),
+			mvc.pattern(CommonURL.VIEW_LOGIN),
+			mvc.pattern(CommonURL.VIEW_REGISTRATION + "/**"),
+			mvc.pattern(CommonURL.VIEW_MAIN + "/**"),
+			mvc.pattern(CommonURL.VIEW_PRODUCT + "/**"),
 		};
 
 		http
 			.csrf(AbstractHttpConfigurer::disable)
 			.cors(AbstractHttpConfigurer::disable)
+			.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
 			.authorizeHttpRequests((httpRequests -> httpRequests
-				.requestMatchers(staticResource).permitAll()
 				.requestMatchers(whiteList).permitAll()))
 			.formLogin((loginOptions -> loginOptions
-				.loginPage(CommonURL.PAGE_LOGIN)
-				.successForwardUrl(CommonURL.PAGE_MAIN))
-			)
+				.loginPage(CommonURL.VIEW_LOGIN)
+				.loginProcessingUrl(CommonURL.MEMBER_LOGIN)))
 			.userDetailsService(loginService)
 			.logout((logoutOptions -> logoutOptions
-				.logoutUrl(CommonURL.LOGOUT)
+				.logoutUrl(CommonURL.MEMBER_LOGOUT)
 				.clearAuthentication(true)
 				.deleteCookies("JSESSIONID")
-				.logoutSuccessUrl(CommonURL.PAGE_MAIN)));
+				.logoutSuccessUrl(CommonURL.VIEW_MAIN)));
 
 		return http.build();
 	}

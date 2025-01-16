@@ -9,7 +9,7 @@ import com.kjw.ecommerce.common.url.CommonUrl.CommonURL;
 @Controller
 public class DashBoardController {
 
-	@GetMapping(CommonURL.PAGE_DASHBOARD)
+	@GetMapping(CommonURL.VIEW_DASHBOARD)
 	public ModelAndView getDashboardPage() {
 		return new ModelAndView("/dashboard/dashboard");
 	}

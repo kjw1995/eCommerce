@@ -23,7 +23,7 @@ public class RegisterController {
 
 	private final RegisterService registerService;
 
-	@GetMapping(CommonURL.PAGE_REGISTRATION)
+	@GetMapping(CommonURL.VIEW_REGISTRATION)
 	public ModelAndView getRegisterPage() {
 		return new ModelAndView("/register/register");
 	}
