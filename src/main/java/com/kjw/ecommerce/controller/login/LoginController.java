@@ -19,7 +19,7 @@ public class LoginController {
 
 	private final LoginService loginService;
 
-	@GetMapping(CommonURL.LOGIN)
+	@GetMapping(CommonURL.PAGE_LOGIN)
 	public ModelAndView getLoginPage() {
 		return new ModelAndView("/login/login");
 	}

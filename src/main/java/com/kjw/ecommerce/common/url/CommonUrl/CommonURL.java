@@ -15,6 +15,7 @@ public class CommonURL {
 	/* 페이지 */
 	public static final String PAGE_URI = "/page";
 	public static final String PAGE_MAIN = PAGE_URI + "/main";
+	public static final String PAGE_LOGIN = PAGE_URI + "/login";
 	public static final String PAGE_REGISTRATION = PAGE_URI + "/registration";
 	public static final String PAGE_DASHBOARD = PAGE_URI + "/dashboard";
 	public static final String PAGE_PRODUCT = PAGE_URI + PRODUCT;

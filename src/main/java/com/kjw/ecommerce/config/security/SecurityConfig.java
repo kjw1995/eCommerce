@@ -44,10 +44,11 @@ public class SecurityConfig {
 		};
 
 		MvcRequestMatcher[] whiteList = {
-			mvc.pattern(CommonURL.LOGIN + "/**"),
+			mvc.pattern("/"),
+			mvc.pattern(CommonURL.PAGE_LOGIN),
 			mvc.pattern(CommonURL.PAGE_REGISTRATION + "/**"),
 			mvc.pattern(CommonURL.PAGE_MAIN + "/**"),
-			mvc.pattern(CommonURL.PAGE_PRODUCT + "/**")
+			mvc.pattern(CommonURL.PAGE_PRODUCT + "/**"),
 		};
 
 		http
@@ -57,7 +58,7 @@ public class SecurityConfig {
 				.requestMatchers(staticResource).permitAll()
 				.requestMatchers(whiteList).permitAll()))
 			.formLogin((loginOptions -> loginOptions
-				.loginPage("/login/login")
+				.loginPage(CommonURL.PAGE_LOGIN)
 				.successForwardUrl(CommonURL.PAGE_MAIN))
 			)
 			.userDetailsService(loginService)
